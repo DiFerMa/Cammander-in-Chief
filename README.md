@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo.png" alt="Cammander-in-Chief Logo" width="300"/>
+  <img src="./logo.png" alt="Cammander-in-Chief Logo" width="301"/>
 </p>
 
 # Cammander-in-Chief
