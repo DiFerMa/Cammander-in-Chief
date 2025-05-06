@@ -1,39 +1,41 @@
 <p align="center">
-  <img src="./logo.png" alt="Cammander-in-Chief Logo" width="301"/>
+  <img src="./logo.png" alt="Cammander-in-Chief Logo" width="300"/>
 </p>
 
 # Cammander-in-Chief
-Self-managed, budget-friendly CCTV system — built with love and automation.
 
-**A fully self-managed and budget-friendly CCTV surveillance system for Linux that supports multiple webcams.**  
-Built with love, passion, and the following tools — Python, shell scripts, and Makefile automation — it handles video capture, storage, and optional streaming with minimal setup.
+**A self-managed, budget-friendly CCTV surveillance system for Linux and Raspberry Pi — built with love, automation, and curiosity.**
+
+> ⚠️ This project is new and currently a **Work In Progress (WIP)**. Expect frequent changes and incomplete features.
+
+Cammander-in-Chief is a lightweight and modular CCTV system designed for home setups using a Raspberry Pi 4 and multiple USB webcams. It aims to simplify local video capture, recording, and optional streaming using a combination of Python, shell scripts, and Makefile-driven automation.
 
 ---
 
-## 🔧 Features
+## 🔧 Features (in progress)
 
-- Supports 3–4 USB webcams (or more depending on hardware)
-- Designed for Raspberry Pi 4 and Linux systems
-- Headless operation (no GUI required)
+- Supports 3–4 USB webcams (or more, depending on hardware)
+- Designed for Raspberry Pi 4 and Linux-based systems
+- Headless operation (no desktop environment required)
 - Local video recording
 - Optional live streaming
-- Modular scripts for easy maintenance and customization
-- Simple automation using Makefile
+- Script-based management and automation with Makefile
+- Easy to extend or modify
 
 ---
 
 ## 🧰 Tech Stack
 
 - Python
-- Shell scripts
+- Bash/Shell scripts
 - Makefile
-- `ffmpeg`, `v4l2`, `motion`, or other Linux webcam tools (depending on your setup)
+- `ffmpeg`, `v4l2`, `motion` (depending on your config)
 
 ---
 
 ## 🚀 Getting Started
 
-> **Note:** Full setup instructions and configuration will be added soon.
+> Full setup instructions coming soon.
 
 1. Clone the repository:
    ```bash
