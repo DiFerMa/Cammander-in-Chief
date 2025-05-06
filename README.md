@@ -1,7 +1,9 @@
-# Cammander-in-Chief
-Self-managed, budget-friendly CCTV system — built with love and automation.
+<p align="center">
+  <img src="./logo.png" alt="Cammander-in-Chief Logo" width="300"/>
+</p>
 
 # Cammander-in-Chief
+Self-managed, budget-friendly CCTV system — built with love and automation.
 
 **A fully self-managed and budget-friendly CCTV surveillance system for Linux that supports multiple webcams.**  
 Built with love, passion, and the following tools — Python, shell scripts, and Makefile automation — it handles video capture, storage, and optional streaming with minimal setup.
