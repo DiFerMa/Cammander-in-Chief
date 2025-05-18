@@ -1,5 +1,9 @@
 # Makefile for Cammander-in-Chief
 
+# variables
+# Python interpreter
+PYTHON := .venv/bin/python
+
 # === WireGuard VPN ===
 
 up-vpn:
@@ -21,8 +25,8 @@ show-server-config:
 
 # === Flask App ===
 
-start-flask:
-	cd backend && FLASK_APP=app.py flask run --host=0.0.0.0 --port=5000
+flask-start:
+	$(PYTHON) backend/app.py
 	@echo "Flask server running at http://0.0.0.0:5000"
 
 # === Utilities ===
