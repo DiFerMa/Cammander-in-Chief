@@ -118,7 +118,15 @@ AllowedIPs = 0.0.0.0/0
 PersistentKeepalive = 25
 ```
 
-To generate the keys, Wire Guard app can do it directly.
+To generate the peer keys, Wire Guard app can do it directly on the phone.
+
+**NOTE:** You need a **Dynamic DNS (DDNS) service** to track your changing public IPv4 address. This is necessary because your home IP (used in the `Endpoint` field of the client config) can change over time unless your ISP gives you a static one.
+
+If you do have a **static IPv4**, you can directly use it in the config like: `Endpoint = XX.XX.XX.XXX:51820`. 
+Just replace the Xs with your actual public IP.
+
+However, static IPs are **rare for home internet users**, so DDNS services like MyFRITZ/DuckDNS are commonly used instead.
+
 
 **Why those values?**
 
@@ -130,6 +138,26 @@ To generate the keys, Wire Guard app can do it directly.
 | Peer      | Endpoint           | your-ddns-name.duckdns.org:51820     | Where to find the server on the internet. Must match router's public IP and port forward. |
 | Peer      | AllowedIPs         | 0.0.0.0/0                             | Routes **all** traffic through the VPN.                                    |
 | Peer      | PersistentKeepalive| 25                                    | Sends a small packet every 25s to keep NAT/firewall open. Useful for mobile clients. |
+
+### BTW: you will loose internet on your clients...
+
+If you set `AllowedIPs = 0.0.0.0/0` on the client, **all of the client's internet traffic** will try to go through the VPN tunnel. Meaning your phone will loose internet connection, like if you visit `example.com` on your browser, it will just not load.
+
+This is useful when:
+- You want full privacy.
+- You want your phone to *behave* as if it's physically on your home network (as I DO want).
+
+#### ⚠️ But Take Note:
+By default, the VPN server will **not forward internet traffic** unless you enable:
+
+- IP forwarding on the server
+- NAT (Network Address Translation) using `iptables`
+
+These steps effectively turn your VPN server into a **gateway to the internet** for your clients. In other words, your router connects them to the open internet.
+
+This has security considerations: if misconfigured, it may expose your server or allow unwanted traffic routing.
+
+The scope of this project is NOT to enable IP Forwarding and NAT on the Server.
 
 
 ## ⚠️ 🔐 Never commit your private keys to Git! See .gitignore below.
