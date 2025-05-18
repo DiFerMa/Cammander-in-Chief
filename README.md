@@ -21,6 +21,7 @@ Cammander-in-Chief is a lightweight and modular CCTV system designed for home se
 - Optional live streaming
 - Script-based management and automation with Makefile
 - Easy to extend or modify
+- 📡 Secure remote access via [WireGuard VPN](docs/wire-guard/README.md)
 
 ---
 

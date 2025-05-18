@@ -1,0 +1,4 @@
+.venv/
+*privatekey*
+*publickey*
+backend/__pycache__
