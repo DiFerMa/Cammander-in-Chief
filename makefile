@@ -8,7 +8,8 @@ PI_REPO_PATH := ~/Documents/repos/Cammander-in-Chief
 PI_HOST := diego@raspberrypi.local
 
 .PHONY: up-vpn down-vpn restart-vpn status-vpn start-server get-ip \
-        connect-2-raspberrypi manual-update-raspberrypi uptime-raspberrypi
+        connect-2-raspberrypi manual-update-raspberrypi uptime-raspberrypi \
+		reboot-raspberrypi shutdown-raspberrypi
 
 # === WireGuard VPN ===
 
@@ -42,6 +43,7 @@ get-ip:
 	@echo "\nPublic IPv4."
 
 # === Raspberry Pi Server Control ===
+# to be used only IN raspberry pi terminal after successful ssh connection.
 
 connect-2-raspberrypi:
 	@ssh -t $(PI_HOST) 'cd $(PI_REPO_PATH) && exec bash'
@@ -50,5 +52,10 @@ manual-update-raspberrypi:
 	@sudo apt update && sudo apt upgrade -y
 
 uptime-raspberrypi:
-	@'uptime'
+	@uptime
 
+reboot-raspberrypi:
+	@sudo reboot
+
+shutdown-raspberrypi:
+	@sudo poweroff
