@@ -1,8 +1,15 @@
 # Makefile for Cammander-in-Chief
 
-# variables
+# Variables
 # Python interpreter
 PYTHON := .venv/bin/python
+# Remote Raspberry Pi project directory
+PI_REPO_PATH := ~/Documents/repos/Cammander-in-Chief
+PI_HOST := diego@raspberrypi.local
+
+.PHONY: up-vpn down-vpn restart-vpn status-vpn start-server get-ip \
+        connect-2-raspberrypi reboot-raspberrypi shutdown-raspberrypi \
+        manual-update-raspberrypi uptime-raspberrypi
 
 # === WireGuard VPN ===
 
@@ -35,4 +42,20 @@ get-ip:
 	@curl -4 ifconfig.me
 	@echo "\nPublic IPv4."
 
-.PHONY: up-vpn down-vpn restart-vpn status-vpn start-server get-ip
+# === Raspberry Pi Server Control ===
+
+connect-2-raspberrypi:
+	@ssh -t $(PI_HOST) 'cd $(PI_REPO_PATH) && exec bash'
+
+reboot-raspberrypi:
+	@ssh $(PI_HOST) 'sudo reboot'
+
+shutdown-raspberrypi:
+	@ssh $(PI_HOST) 'sudo poweroff'
+
+manual-update-raspberrypi:
+	@ssh $(PI_HOST) 'sudo apt update && sudo apt upgrade -y'
+
+uptime-raspberrypi:
+	@ssh $(PI_HOST) 'uptime'
+
