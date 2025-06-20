@@ -112,7 +112,7 @@ def light_on():
 @app.route('/light/off')
 def light_off():
     try:
-        requests.get(f"{SHELLY_IP}/light/0?turn=off", timeout=3)
+        requests.get(f"{SHELLY_IP}/light/0/set?mode=color&turn=off", timeout=3)
     except Exception as e:
         print(f"[ERROR] Failed to toggle light: {e}")
 
