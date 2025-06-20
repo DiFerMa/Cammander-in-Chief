@@ -32,14 +32,58 @@ def generate_frames(camera_path):
 
 @app.route('/')
 def home():
-    return render_template_string('''
+    html = '''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cammander-in-Chief</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 1em;
+                max-width: 600px;
+                margin: auto;
+                line-height: 1.6;
+            }
+            h1 {
+                font-size: 1.5em;
+                text-align: center;
+            }
+            ul {
+                padding-left: 0;
+                list-style: none;
+            }
+            li {
+                margin: 1em 0;
+            }
+            a {
+                display: block;
+                padding: 0.75em;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 1.2em;
+            }
+            a:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
         <h1>📷 Cammander-in-Chief: Camera Dashboard</h1>
         <ul>
-          <li><a href="/cam/cam1">View Flur</a></li>
-          <li><a href="/cam/cam2">View Dinning room</a></li>
-          <li><a href="/cam/cam3">View Balcon</a></li>
+            <li><a href="/cam/cam1">View Flur</a></li>
+            <li><a href="/cam/cam2">View Dinning room</a></li>
+            <li><a href="/cam/cam3">View Balcon</a></li>
         </ul>
-    ''')
+    </body>
+    </html>
+    '''
+    return render_template_string(html)
 
 @app.route('/cam/<cam_id>')
 def camera_page(cam_id):
