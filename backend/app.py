@@ -104,16 +104,18 @@ def light_on():
     try:
         requests.get(f"{SHELLY_IP}/light/0?turn=on", timeout=3)
         start_light_timer()
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[ERROR] Failed to toggle light: {e}")
+
     return redirect(url_for('home'))
 
 @app.route('/light/off')
 def light_off():
     try:
         requests.get(f"{SHELLY_IP}/light/0?turn=off", timeout=3)
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[ERROR] Failed to toggle light: {e}")
+
     return redirect(url_for('home'))
 
 def start_light_timer():
@@ -125,8 +127,9 @@ def start_light_timer():
             time.sleep(20 * 60)
             try:
                 requests.get(f"{SHELLY_IP}/light/0?turn=off", timeout=3)
-            except:
-                pass
+            except Exception as e:
+                print(f"[ERROR] Failed to toggle light: {e}")
+
         light_timer_thread = threading.Thread(target=timer, daemon=True)
         light_timer_thread.start()
 
