@@ -36,6 +36,9 @@ get-ip:
 	@echo "\nPublic IPv4."
 
 autostart-vpn:
+	@echo "Using built-in: 'systemctl enable wg-quick@wg0'autostart will be created for VPN"
+	@echo "INFO: Function from helper tool 'wg-quick'."
+	@echo "it will create this symlink to service: '/etc/systemd/system/multi-user.target.wants/wg-quick@wg0.service'"
 	@sudo systemctl enable wg-quick@wg0
 	@echo "Creating wg-monitor.service..."
 	echo "[Unit]" | sudo tee /etc/systemd/system/wg-monitor.service > /dev/null
