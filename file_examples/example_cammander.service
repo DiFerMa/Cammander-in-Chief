@@ -1,0 +1,13 @@
+[Unit]
+Description=Camera System Manager (main.py)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 <path/to>//Cammander-in-Chief/main.py
+WorkingDirectory=<your/home>
+Restart=always
+User=<user>
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
