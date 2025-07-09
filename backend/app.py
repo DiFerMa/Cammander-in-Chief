@@ -31,7 +31,7 @@ def generate_frames(camera_path):
         success, frame = cap.read()
         if not success:
             break
-        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+        frame = cv2.rotate(frame, cv2.ROTATE_180)
         _, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
