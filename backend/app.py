@@ -22,11 +22,16 @@ def generate_frames(camera_path):
     cap = cv2.VideoCapture(camera_path)
     if not cap.isOpened():
         return
+    # Set to best resolution and format
+    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+
     while True:
         success, frame = cap.read()
         if not success:
             break
-        frame = cv2.rotate(frame, cv2.ROTATE_180)
+        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
         _, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
