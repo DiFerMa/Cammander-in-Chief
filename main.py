@@ -2,6 +2,8 @@
 import time
 import subprocess
 from gpiozero import LED, Button
+import sys
+from pathlib import Path
 
 # GPIO setup
 led1 = LED(17)  # Indicates cameras are running
@@ -10,14 +12,13 @@ button = Button(23, pull_up=False, bounce_time=0.1)  # Using pull-down resistor
 
 # Track the subprocess running Flask app
 app_process = None
+APP_PATH = (Path(__file__).resolve().parent / "backend" / "app.py").as_posix()
 
 def start_cameras():
     global app_process
     if app_process is None:
         print("[INFO] Starting camera app...")
-        app_process = subprocess.Popen([
-            "python3", "/home/diego/Documents/repos/Cammander-in-Chief/backend/app.py"
-        ])
+        app_process = subprocess.Popen([sys.executable, APP_PATH])
         led1.on()
         led2.off()
 

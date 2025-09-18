@@ -2,3 +2,5 @@ flask
 opencv-python-headless
 requests
 gpiozero
+RPi.GPIO
+lgpio
